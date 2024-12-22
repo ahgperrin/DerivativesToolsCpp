@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/antoineperrin/Documents/Work_Finance/Cpp_programing/DerivativesTools/include/DerivativesTools/models.hpp
+vector
+-
+
+/Users/antoineperrin/Documents/Work_Finance/Cpp_programing/DerivativesTools/include/DerivativesTools/simulation.hpp
+vector
+-
+future
+-
+thread
+-
+
+/Users/antoineperrin/Documents/Work_Finance/Cpp_programing/DerivativesTools/main.cpp
+iostream
+-
+include/DerivativesTools/models.hpp
+/Users/antoineperrin/Documents/Work_Finance/Cpp_programing/DerivativesTools/include/DerivativesTools/models.hpp
+include/DerivativesTools/simulation.hpp
+/Users/antoineperrin/Documents/Work_Finance/Cpp_programing/DerivativesTools/include/DerivativesTools/simulation.hpp
+chrono
+-
+fstream
+-
+
