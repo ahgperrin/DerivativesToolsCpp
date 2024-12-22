@@ -115,7 +115,9 @@ $$
 
 ### 5. **Variance Gamma (VG) Model**
 A pure jump model where returns follow a gamma process:
-$$dS_t = S_t ( \mu dt + \sigma d\Gamma_t )$$
+$$
+dS_t = S_t ( \mu dt + \sigma d\Gamma_t )
+$$
 
 #### Parameters:
 - Drift \( \mu \)
@@ -127,4 +129,50 @@ $$dS_t = S_t ( \mu dt + \sigma d\Gamma_t )$$
 ### 6. **Bates Model**
 Extends the Heston model with jumps:
 $$
-dS_t = \mu S_t dt + \sqrt{v_t} S_t dW_t + S_
+dS_t = \mu S_t dt + \sqrt{v_t} S_t dW_t + S_t dJ_t
+$$
+
+---
+
+### 7. **Merton Model**
+A jump-diffusion model with normal jump sizes:
+$$
+dS_t = \mu S_t dt + \sigma S_t dW_t + J_t S_t
+$$
+
+---
+
+### 8. **Non-Inverse Gaussian (NIG)**
+A Lévy process characterized by inverse Gaussian distributions of jumps.
+
+---
+
+## How to Simulate
+
+Each model provides a `simulate(int nbSteps)` method to generate a price path.
+
+### Example Code: CGMY Model
+```cpp
+#include <iostream>
+#include "DerivativesTools/models.hpp"
+
+int main() {
+    // Initialize the CGMY model with parameters:
+    // Spot price = 100, Risk-free rate = 5%, Maturity = 0.26 years, Dividends = 1.5%
+    // C = 0.2, G = 3, M = 2, Y = 0.5
+    CGMYModel model(100, 0.05, 0.26, 0.015, 0.2, 3, 2, 0.5);
+
+    // Display model parameters
+    model.showModel();
+
+    // Simulate a price path with 252 time steps (daily steps for ~1 year)
+    auto path = model.simulate(252);
+
+    // Print the simulated path
+    std::cout << "Simulated Path:" << std::endl;
+    for (double price : path) {
+        std::cout << price << std::endl;
+    }
+
+    return 0;
+}
